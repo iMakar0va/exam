@@ -24,7 +24,7 @@ if (isset($_SESSION['is_admin'])) {
 <body>
     <div class="container">
         <header>
-            <h1>Мой не сам</h1>
+            <h1>Грузовозофф</h1>
         </header>
         <form id="regForm">
             <h2>Регистрация</h2>
@@ -39,12 +39,12 @@ if (isset($_SESSION['is_admin'])) {
             <label for="email">Почта*:</label>
             <input type="email" id="email" name="email" required>
             <label for="login">Логин*:</label>
-            <input type="text" id="login" name="login" required>
+            <input type="text" id="login" name="login" placeholder="не меньше 6 символов" required>
             <label for="password">Пароль*:</label>
-            <input type="password" id="password" name="password" placeholder="не меньше 4 символов" required>
+            <input type="password" id="password" name="password" placeholder="не меньше 6 символов" required>
             <p>* - обязательные поля</p>
             <div id="errorMessage"></div>
-            <button type="submit">Войти</button>
+            <button type="submit">Создать</button>
             <div class="link">
                 Уже есть аккаунт? <a href="auth.php">Войти</a>
             </div>

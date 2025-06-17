@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-$get_apps = "SELECT * from applications where user_id =$1 and status!='выполнено' order by date desc;";
+$get_apps = "SELECT * from applications where user_id =$1 and status='выполнено' order by date desc;";
 $result = pg_query_params($conn, $get_apps, [$user_id]);
 
 $applications = pg_fetch_all($result) ?: [];
@@ -41,12 +41,11 @@ $user_name = pg_fetch_assoc($res_user);
         </header>
         <main>
             <div class="title">
-                <a href="lk_past.php">Список завершенных заявок</a>
-                <a href="creating_application.php"><img src="plus.svg" alt="plus">Создать заявку</a>
+                <h2>Список завершенных заявок</h2>
+                <a href="lk.php">Список текущих задач</a>
             </div>
-            <h2>Список текущих заявок</h2>
             <?php if (empty($applications)): ?>
-                <p>У вас нет текущих заявок</p>
+                <p>У вас нет завершенных заявок</p>
             <?php else: ?>
                 <div class="cards">
                     <?php foreach ($applications as $app): ?>
@@ -60,6 +59,11 @@ $user_name = pg_fetch_assoc($res_user);
                             <div class="text"><b>Адрес доставки:</b> <?= htmlspecialchars($app['address_to']) ?></div>
                             <div class="text"><b>Тип груза:</b> <?= htmlspecialchars($app['type']) ?></div>
                             <div class="text"><b>Статус:</b> <?= htmlspecialchars($app['status']) ?></div>
+                            <?php if (empty($app['review'])): ?>
+                                <a href="rewiew.php?app_id=<?= htmlspecialchars($app['application_id']) ?>" class="button">Оставить отзыв</a>
+                            <?php else: ?>
+                                <div class="text"><b>Отзыв:</b> <?= htmlspecialchars($app['review']) ?></div>
+                            <?php endif ?>
                         </div>
                     <?php endforeach ?>
                 </div>

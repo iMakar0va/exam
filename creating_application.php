@@ -27,7 +27,7 @@ $user = pg_fetch_assoc($res_user);
 <body>
     <div class="container">
         <header>
-            <h1>Мой не сам</h1>
+            <h1>Грузовозофф</h1>
             <div class="block">
                 <p><?= htmlspecialchars($user['last_name']) . " " . htmlspecialchars($user['first_name']) ?></p>
                 <a href="logout.php">Выйти</a>
@@ -39,32 +39,30 @@ $user = pg_fetch_assoc($res_user);
 
         <form id="createForm">
             <h2>Создание заявки</h2>
-            <label for="date">Дата*:</label>
+            <label for="date">Дата перевозки*:</label>
             <input type="date" id="date" name="date">
-            <label for="time">Время*:</label>
+            <label for="time">Время перевозки*:</label>
             <input type="time" id="time" name="time">
-            <label for="address">Адрес*:</label>
-            <input type="text" id="address" name="address">
-            <label for="phone">Телефон*:</label>
-            <input type="text" id="phone" name="phone">
-            <label for="service">Услуга*:</label>
-            <select name="service" id="service">
-                <option value="">--Выберете услугу--</option>
-                <option value="Стирка">Стирка</option>
-                <option value="Уборка">Уборка</option>
-                <option value="Мойка">Мойка</option>
+            <label for="weight">Вес груза (приблизительный)*:</label>
+            <input type="text" id="weight" name="weight">
+            <label for="dimensions">Габариты груза*:</label>
+            <input type="text" id="dimensions" name="dimensions">
+            <label for="address_from">Адрес отправления*:</label>
+            <input type="text" id="address_from" name="address_from">
+            <label for="address_to">Адрес доставки*:</label>
+            <input type="text" id="address_to" name="address_to">
+            <label for="type">Тип груза*:</label>
+            <select name="type" id="type">
+                <option value="">--Выберете тип --</option>
+                <option value="хрупкое">хрупкое</option>
+                <option value="скоропортящееся">скоропортящееся</option>
+                <option value="животное">животное</option>
             </select>
             <div class="box">
                 <input type="checkbox" name="checkbox" id="checkbox">
-                <label for="checkbox">Иная услуга</label>
+                <label for="checkbox">Иной тип</label>
             </div>
-            <textarea name="otherService" id="otherService" cols="30" rows="10" style="display: none;"></textarea>
-            <label for="payment">Оплата*:</label>
-            <select name="payment" id="payment">
-                <option value="">--Выберете тип оплаты--</option>
-                <option value="наличные">наличные</option>
-                <option value="банковская карта">банковская карта</option>
-            </select>
+            <textarea name="otherType" id="otherType" cols="30" rows="10" style="display: none;"></textarea>
             <p>* - обязательные поля</p>
             <div id="errorMessage"></div>
             <button type="submit">Создать</button>

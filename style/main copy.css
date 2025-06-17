@@ -1,21 +1,17 @@
-/* Общие настройки */
 *,
 *::after,
 *::before {
   box-sizing: border-box;
 }
-
 body {
   font-family: "Segoe UI", sans-serif;
 }
-
 .container {
   margin: 0 auto;
   padding: 0px 15px;
   max-width: 1200px;
   width: 100%;
 }
-
 header {
   display: flex;
   align-items: center;
@@ -24,41 +20,11 @@ header {
 
   background-color: #1156c7;
   color: white;
-  padding: 20px;
+  padding: 10px 20px;
   border-radius: 0 0 15px 15px;
 }
-
-.link {
-  margin-top: 10px;
-  text-align: center;
-}
-
-.link a {
-  text-decoration: none;
-  color: #1156c7;
-  font-weight: bold;
-  transition: all 0.3s;
-}
-
-.link a:hover {
-  color: #0b4094;
-}
-
-.error {
-  border: 2px solid #9d1111;
-}
-
-#errorMessage {
-  margin-bottom: 10px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 16px;
-}
-
-/* Стили формы */
-
 form {
-  padding: 20px;
+  padding: 0px 20px 10px 20px;
   margin: 25px auto;
   display: block;
   max-width: 550px;
@@ -66,7 +32,6 @@ form {
   border-radius: 15px;
   box-shadow: 0px 4px 15px rgb(8 57 145 / 15%);
 }
-
 input,
 select,
 textarea {
@@ -79,7 +44,8 @@ textarea {
   background-color: #f5f4f4ba;
   border: 1px solid #828181;
 }
-
+input:not([type="checkbox"]):focus,
+input:not([type="radio"]):focus,
 select:focus,
 textarea:focus {
   outline: none;
@@ -87,51 +53,115 @@ textarea:focus {
   border: 1px solid #686464;
   background-color: #fff;
 }
-input[type="checkbox"]:focus,
-input[type="radio"]:focus {
-  box-shadow: none;
-}
-
 textarea {
-  font-family: inherit;
   min-width: 100px;
   max-width: 100%;
   max-height: 200px;
-  overflow-y: auto;
+  overflow-y: auto; /* Скролл при достижении максимума */
 }
-
 label {
   display: block;
+  /* margin: 12px 0 5px 0; */
   font-size: 16px;
 }
-
+button {
+  margin: 0 auto;
+  display: block;
+  border: none;
+  width: 30%;
+  padding: 10px 12px;
+  border-radius: 7px;
+  background-color: #1156c7;
+  color: white;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+button:hover {
+  cursor: pointer;
+  background-color: #0b4094;
+}
+.link {
+  margin-top: 10px;
+  text-align: center;
+}
+.link a {
+  text-decoration: none;
+  color: #1156c7;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+.link a:hover {
+  color: #0b4094;
+}
+.error {
+  border: 2px solid #9d1111;
+}
+#errorMessage {
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+.block {
+  font-size: 16px;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+.block a {
+  text-align: center;
+  width: fit-content;
+  text-decoration: none;
+  background-color: #fff;
+  padding: 7px 10px;
+  color: #1156c7;
+  font-weight: bold;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+.text {
+  margin-top: 10px;
+}
+.block a:hover {
+  background-color: #0b4094;
+  color: white;
+}
 form select {
   appearance: none;
+  /* background-image: url("data:image/svg+xml;utf8,<svg fill='%234CAF50' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>"); */
   background-image: url("../arrow.svg");
+
   background-repeat: no-repeat;
   background-position: right 12px center;
   background-size: 16px 16px;
 }
 
+#change_status {
+  margin-top: 10px;
+  width: 100%;
+}
 .box {
   display: flex;
 }
-
 .box input {
   width: 20px;
 }
-
-.status_group input {
-  width: 30px;
+.title {
+  margin: 25px 0 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
-
-/* Стили кнопок */
-
-button {
-  margin: 0 auto;
-  display: block;
-  border: none;
-  width: 200px;
+.title img {
+  width: 24px;
+}
+.title a {
+  display: flex;
+  gap: 10px;
+  text-decoration: none;
   padding: 10px 12px;
   border-radius: 7px;
   background-color: #1156c7;
@@ -140,16 +170,32 @@ button {
   transition: all 0.3s;
 }
 
-button:hover {
+.title a:hover {
   cursor: pointer;
   background-color: #0b4094;
 }
-
-#change_status {
-  margin-top: 10px;
-  width: 100%;
+.cards {
+  display: flex;
+  flex-wrap: wrap;
 }
-
+.card {
+  width: 330px;
+  margin: 10px;
+  border-radius: 15px;
+  border: 2px solid #1157c769;
+  padding: 10px;
+}
+.card_id {
+  background-color: #a39e9ea9;
+  border-radius: 10px;
+  padding: 7px 10px;
+  width: fit-content;
+  color: #322f2f;
+  margin-top: 10px;
+}
+.status_group input {
+  width: 30px;
+}
 .delete {
   display: block;
   margin-left: auto;
@@ -162,92 +208,4 @@ button:hover {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
-}
-
-/* Стили отдельных страниц */
-
-.title {
-  margin: 25px 0 0 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-}
-
-.title img {
-  width: 24px;
-}
-
-.title a,
-.button {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  text-decoration: none;
-  padding: 10px 12px;
-  border-radius: 7px;
-  background-color: #1156c7;
-  color: white;
-  font-size: 16px;
-  transition: all 0.3s;
-}
-
-.title a:hover,
-.button:hover {
-  cursor: pointer;
-  background-color: #0b4094;
-}
-
-.block {
-  font-size: 16px;
-  text-align: right;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
-}
-
-.block a {
-  text-align: center;
-  width: fit-content;
-  text-decoration: none;
-  background-color: #fff;
-  padding: 7px 10px;
-  color: #1156c7;
-  font-weight: bold;
-  border-radius: 10px;
-  transition: all 0.3s;
-}
-
-.text {
-  margin-bottom: 10px;
-}
-
-.block a:hover {
-  background-color: #0b4094;
-  color: white;
-}
-
-/* Стили карточек */
-
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.card {
-  width: 330px;
-  margin: 10px;
-  border-radius: 15px;
-  border: 2px solid #1157c769;
-  padding: 10px;
-}
-
-.card_id {
-  background-color: #a39e9ea9;
-  border-radius: 10px;
-  padding: 7px 10px;
-  width: fit-content;
-  color: #322f2f;
-  margin: 10px 0;
 }

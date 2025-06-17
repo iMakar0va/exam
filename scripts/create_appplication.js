@@ -13,16 +13,14 @@ document.getElementById("createForm").addEventListener("submit", function (e) {
   });
   document.getElementById("errorMessage").textContent = "";
 
-  const namePattern = /^[А-Яа-яЁё\s]+$/;
-  const phonePattern = /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/;
-
   const date = form.date.value.trim();
   const time = form.time.value.trim();
-  const address = form.address.value.trim();
-  const phone = form.phone.value.trim();
-  const service = form.service.value.trim();
-  const otherService = form.otherService.value.trim();
-  const payment = form.payment.value.trim();
+  const weight = form.weight.value.trim();
+  const dimensions = form.dimensions.value.trim();
+  const addressFrom = form.address_from.value.trim();
+  const addressTo = form.address_to.value.trim();
+  const type = form.type.value.trim();
+  const otherType = form.otherType.value.trim();
 
   if (!date) {
     errors.push("Введите корректную дату");
@@ -45,30 +43,33 @@ document.getElementById("createForm").addEventListener("submit", function (e) {
     form.time.classList.add("error");
     isValid = false;
   }
-  if (!address) {
-    errors.push("Введите адрес");
-    form.address.classList.add("error");
+  if (!weight) {
+    errors.push("Введите вес груза");
+    form.time.classList.add("error");
     isValid = false;
   }
-  if (!phonePattern.test(phone) || !phone) {
-    errors.push("Введите корректный номер телефона");
-    form.phone.classList.add("error");
+  if (!dimensions) {
+    errors.push("Введите габариты груза");
+    form.time.classList.add("error");
     isValid = false;
   }
-  if (!service && !otherService) {
+  if (!addressFrom) {
+    errors.push("Введите адрес отправления");
+    form.address_from.classList.add("error");
+    isValid = false;
+  }
+  if (!addressTo) {
+    errors.push("Введите адрес доставки");
+    form.address_from.classList.add("error");
+    isValid = false;
+  }
+  if (!type && !otherType) {
     errors.push("Введите услугу");
-
-    if (document.getElementById("service").disabled) {
-      form.otherService.classList.add("error");
+    if (document.getElementById("type").disabled) {
+      form.otherType.classList.add("error");
     } else {
-      form.service.classList.add("error");
+      form.type.classList.add("error");
     }
-
-    isValid = false;
-  }
-  if (!payment) {
-    errors.push("Введите корректную оплату");
-    form.payment.classList.add("error");
     isValid = false;
   }
   if (!isValid) {
@@ -95,19 +96,19 @@ document.getElementById("createForm").addEventListener("submit", function (e) {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  const service = document.getElementById("service");
+  const type = document.getElementById("type");
   const checkbox = document.getElementById("checkbox");
-  const otherService = document.getElementById("otherService");
+  const otherType = document.getElementById("otherType");
 
   checkbox.addEventListener("change", function () {
     if (this.checked) {
-      otherService.style.display = "block";
-      service.value = "";
-      service.disabled = true;
+      otherType.style.display = "block";
+      type.value = "";
+      type.disabled = true;
     } else {
-      otherService.value = "";
-      otherService.style.display = "none";
-      service.disabled = false;
+      otherType.value = "";
+      otherType.style.display = "none";
+      type.disabled = false;
     }
   });
 });

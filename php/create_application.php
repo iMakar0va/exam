@@ -13,17 +13,18 @@ function validate($data)
 
 $date = validate($_POST['date']);
 $time = validate($_POST['time']);
-$address = validate($_POST['address']);
-$phone = validate($_POST['phone']);
-$service = validate($_POST['service'] ?? '');
-$otherService = validate($_POST['otherService'] ?? '');
-$payment = validate($_POST['payment']);
+$weight = validate($_POST['weight']);
+$dimensions = validate($_POST['dimensions']);
+$address_from = validate($_POST['address_from']);
+$address_to = validate($_POST['address_to']);
+$type = validate($_POST['type'] ?? '');
+$otherType = validate($_POST['otherType'] ?? '');
 
-$final_service = $otherService !== '' ? $otherService : $service;
+$final_type = $otherType !== '' ? $otherType : $type;
 $user_id = $_SESSION['user_id'];
 
-$insert_app = "INSERT INTO applications (user_id, service, application_phone, date, time, address, payment) values ($1, $2, $3, $4, $5, $6, $7)";
-$result = pg_query_params($conn, $insert_app, [$user_id, $final_service, $phone, $date, $time, $address, $payment]);
+$insert_app = "INSERT INTO applications (user_id, date, time, weight, dimensions, address_from, address_to, type) values ($1, $2, $3, $4, $5, $6, $7, $8)";
+$result = pg_query_params($conn, $insert_app, [$user_id, $date, $time, $weight, $dimensions, $address_from, $address_to, $final_type]);
 
 if ($result) {
     echo json_encode(['success' => true]);

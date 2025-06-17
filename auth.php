@@ -24,7 +24,7 @@ if (isset($_SESSION['is_admin'])) {
 <body>
     <div class="container">
         <header>
-            <h1>Мой не сам</h1>
+            <h1>Грузовозофф</h1>
         </header>
         <form id="authForm">
             <h2>Авторизация</h2>

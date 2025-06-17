@@ -50,8 +50,8 @@ document.getElementById("regForm").addEventListener("submit", function (e) {
     form.email.classList.add("error");
     isValid = false;
   }
-  if (!login) {
-    errors.push("Введите логин");
+  if (login.length < 6 || !login || !namePattern.test(login)) {
+    errors.push("Введите логин длиной неменьше 6 символов");
     form.login.classList.add("error");
     isValid = false;
   }
@@ -84,4 +84,18 @@ document.getElementById("regForm").addEventListener("submit", function (e) {
     .catch((error) => {
       document.getElementById("errorMessage").innerHTML = error.message;
     });
+});
+
+//Формат телефона
+document.addEventListener("DOMContentLoaded", () => {
+  const phone = document.getElementById("phone");
+  phone.addEventListener("input", (e) => {
+    let value = phone.value.replace(/[^0-9]/g, "");
+    if (value.length > 1) value = "+7 (" + value.slice(1);
+    if (value.length > 7) value = value.slice(0, 7) + ") " + value.slice(7);
+    if (value.length > 12) value = value.slice(0, 12) + "-" + value.slice(12);
+    if (value.length > 15) value = value.slice(0, 15) + "-" + value.slice(15);
+    if (value.length > 18) value = value.slice(0, 18);
+    phone.value = value;
+  });
 });

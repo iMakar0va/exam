@@ -15,7 +15,7 @@ function validate($data)
 $login = validate($_POST['login']);
 $password = validate($_POST['password']);
 
-if ($login == "admin" && $password == "password") {
+if ($login == "admin" && $password == "gruzovik2024") {
     $_SESSION['is_admin'] = true;
     echo json_encode(['success' => true, 'message' => "Админ"]);
     pg_close($conn);
